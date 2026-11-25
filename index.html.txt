@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Yehya Rahhal — Chilled Water Plant Manager at Nesma United. Professional contact card.">
+  <title>Yehya Rahhal | Digital Business Card</title>
+
+  <style>
+    /* =========================================
+       1. DESIGN SYSTEM
+    ========================================= */
+    :root {
+      --bg: #07111f;
+      --surface: #0c1a2b;
+      --surface-light: #11233a;
+      --border: rgba(148, 190, 220, 0.13);
+      --text: #f4f8ff;
+      --muted: #9aafc5;
+      --teal: #4de2d0;
+      --blue: #63a7ff;
+      --radius: 26px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 18px;
+      background:
+        radial-gradient(ellipse at 10% 10%, rgba(31, 110, 160, 0.17), transparent 42%),
+        radial-gradient(ellipse at 90% 90%, rgba(39, 183, 165, 0.10), transparent 42%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    a {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 4px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 470px;
+      margin: auto;
+    }
+
+    /* =========================================
+       2. BUSINESS CARD
+    ========================================= */
+    .business-card {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(155deg, rgba(17, 35, 58, 0.98), rgba(7, 17, 31, 0.99));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow:
+        0 32px 90px rgba(0, 0, 0, 0.38),
+        0 0 45px rgba(77, 226, 208, 0.035);
+      animation: cardEnter 700ms ease both;
+    }
+
+    .business-card::before {
+      content: "";
+      position: absolute;
+      top: -180px;
+      right: -130px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: rgba(65, 155, 255, 0.12);
+      filter: blur(75px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .business-card::after {
+      content: "";
+      position: absolute;
+      bottom: -180px;
+      left: -160px;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      background: rgba(77, 226, 208, 0.08);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      padding: 32px;
+    }
+
+    /* =========================================
+       3. BRAND HEADER
+    ========================================= */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.3px;
+      text-transform: uppercase;
+      color: #dce9f8;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 29px;
+      height: 29px;
+      border-radius: 9px;
+      color: #061521;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      box-shadow: 0 0 18px rgba(77, 226, 208, 0.18);
+    }
+
+    .brand-mark svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border: 1px solid rgba(77, 226, 208, 0.18);
+      border-radius: 30px;
+      background: rgba(77, 226, 208, 0.06);
+      color: #a8e8dd;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 9px var(--teal);
+    }
+
+    /* =========================================
+       4. PROFILE
+    ========================================= */
+    .profile {
+      text-align: center;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 126px;
+      height: 126px;
+      margin: 0 auto 25px;
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 140deg,
+        transparent,
+        var(--teal),
+        var(--blue),
+        transparent 85%
+      );
+      animation: rotateRing 10s linear infinite;
+    }
+
+    .avatar {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 4px solid var(--surface);
+      border-radius: 50%;
+      background: linear-gradient(145deg, #193a55, #0b1c30);
+      box-shadow: 0 0 32px rgba(77, 226, 208, 0.13);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: var(--teal);
+      font-size: 37px;
+      font-weight: 700;
+      letter-spacing: -2px;
+    }
+
+    .profile-eyebrow {
+      margin-bottom: 11px;
+      color: var(--teal);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .profile h1 {
+      font-size: clamp(28px, 7vw, 36px);
+      line-height: 1.15;
+      font-weight: 750;
+      letter-spacing: -1.4px;
+      color: #f6f9ff;
+    }
+
+    .job-title {
+      margin-top: 12px;
+      color: #b8c9dc;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    .company {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 13px;
+      color: #f0f6ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
+
+    .company svg {
+      color: var(--teal);
+    }
+
+    .company-name {
+      background: linear-gradient(90deg, #ffffff, #a8c5df);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* =========================================
+       5. INTRODUCTION
+    ========================================= */
+    .intro {
+      margin: 25px auto 28px;
+      max-width: 340px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+    .intro strong {
+      color: #d8e7f6;
+      font-weight: 600;
+    }
+
+    /* =========================================
+       6. CONTACT BUTTONS
+    ========================================= */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 57px;
+      padding: 13px 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.025);
+      color: #e0eaf6;
+      font-size: 12px;
+      font-weight: 650;
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .contact-btn svg {
+      flex-shrink: 0;
+      width: 19px;
+      height: 19px;
+      color: var(--teal);
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(77, 226, 208, 0.45);
+      background: rgba(77, 226, 208, 0.06);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .contact-btn.primary {
+      grid-column: 1 / -1;
+      min-height: 59px;
+      border: 1px solid transparent;
+      background: linear-gradient(110deg, var(--teal), #67c9ff);
+      color: #071722;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 8px 28px rgba(77, 226, 208, 0.12);
+    }
+
+    .contact-btn.primary svg {
+      color: #071722;
+    }
+
+    .contact-btn.primary:hover {
+      border-color: rgba(255, 255, 255, 0.45);
+      background: linear-gradient(110deg, #72f0e0, #83d4ff);
+      box-shadow: 0 10px 32px rgba(77, 226, 208, 0.22);
+    }
+
+    .contact-btn.whatsapp svg {
+      color: #56e39c;
+    }
+
+    /* =========================================
+       7. DIVIDER & QR CODE
+    ========================================= */
+    .divider {
+      height: 1px;
+      margin: 29px 0 25px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(148, 190, 220, 0.22),
+        transparent
+      );
+    }
+
+    .qr-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .qr-copy {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .qr-copy h2 {
+      margin-bottom: 9px;
+      color: #e9f2fc;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .qr-copy p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .qr-url {
+      display: block;
+      margin-top: 9px;
+      color: var(--teal);
+      font-size: 10px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .qr-frame {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 116px;
+      height: 116px;
+      padding: 8px;
+      border: 1px solid rgba(77, 226, 208, 0.16);
+      border-radius: 15px;
+      background: #f7fbff;
+      box-shadow: 0 0 25px rgba(77, 226, 208, 0.06);
+    }
+
+    .qr-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .qr-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      color: #64748b;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* =========================================
+       8. FOOTER
+    ========================================= */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 27px;
+      padding-top: 19px;
+      border-top: 1px solid rgba(148, 190, 220, 0.09);
+    }
+
+    .footer-brand {
+      color: #7189a4;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-icons a {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: #a4bad1;
+      transition: var(--transition);
+    }
+
+    .footer-icons a:hover {
+      color: var(--teal);
+      border-color: rgba(77, 226, 208, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .footer-icons svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      z-index: 10;
+      width: max-content;
+      max-width: calc(100vw - 32px);
+      padding: 13px 20px;
+      border: 1px solid rgba(77, 226, 208, 0.3);
+      border-radius: 12px;
+      background: #10283a;
+      color: #e6fff9;
+      font-size: 13px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translate(-50%, 15px);
+      pointer-events: none;
+      transition: 250ms ease;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================================
+       9. RESPONSIVE LAYOUT
+    ========================================= */
+    @media (max-width: 400px) {
+      body {
+        padding: 16px 10px;
+      }
+
+      .card-content {
+        padding: 24px 19px;
+      }
+
+      .top-bar {
+        margin-bottom: 30px;
+      }
+
+      .avatar-wrap {
+        width: 108px;
+        height: 108px;
+      }
+
+      .profile h1 {
+        font-size: 28px;
+      }
+
+      .contact-grid {
+        gap: 9px;
+      }
+
+      .contact-btn {
+        min-height: 53px;
+        gap: 7px;
+        padding: 11px 7px;
+        font-size: 11px;
+      }
+
+      .qr-frame {
+        width: 95px;
+        height: 95px;
+      }
+
+      .qr-section {
+        gap: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @keyframes cardEnter {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotateRing {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <article class="business-card">
+      <div class="card-content">
+
+        <!-- BRAND HEADER -->
+        <header class="top-bar">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3L20 8V16L12 21L4 16V8L12 3Z"
+                  stroke="currentColor" stroke-width="2"/>
+                <path d="M8 12L11 15L16 9"
+                  stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Digital Profile</span>
+          </div>
+
+          <div class="status">
+            <span class="status-dot"></span>
+            Professional
+          </div>
+        </header>
+
+        <!-- PROFILE -->
+        <section class="profile" aria-labelledby="person-name">
+          <div class="avatar-wrap">
+            <div class="avatar-ring"></div>
+
+            <div class="avatar">
+              <!--
+                PROFILE PHOTO:
+                Replace the initials below with:
+                <img src="your-photo.jpg" alt="Yehya Rahhal">
+                Use a square, professional portrait.
+              -->
+              <div class="avatar-fallback" aria-label="Profile initials">
+                YR
+              </div>
+            </div>
+          </div>
+
+          <p class="profile-eyebrow">Professional Profile</p>
+
+          <h1 id="person-name">Yehya Rahhal</h1>
+
+          <p class="job-title">
+            Chilled Water Plant Manager
+          </p>
+
+          <div class="company">
+            <svg width="16" height="16" viewBox="0 0 24 24"
+              fill="none" aria-hidden="true">
+              <path d="M4 21V5L12 2L20 5V21M2 21H22M9 7H10M14 7H15M9 11H10M14 11H15M9 15H10M14 15H15"
+                stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="company-name">Nesma United</span>
+          </div>
+        </section>
+
+        <!-- PROFESSIONAL INTRODUCTION -->
+        <section class="intro">
+          Experienced professional in chilled water plant operations,
+          facilities management, and engineering maintenance.
+          Committed to <strong>operational excellence, safety, and
+          reliable plant performance.</strong>
+        </section>
+
+        <!-- CONTACT ACTIONS -->
+        <section class="contact-grid" aria-label="Contact information">
+
+          <a class="contact-btn primary"
+             href="tel:+966535971767">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22 16.92V20A2 2 0 0 1 19.82 22
+                A19.79 19.79 0 0 1 11.19 18.92
+                A19.5 19.5 0 0 1 5.08 12.81
+                A19.79 19.79 0 0 1 2 4.18
+                A2 2 0 0 1 4 2H7
+                A2 2 0 0 1 9 3.72
+                C9.13 4.7 9.36 5.65 9.7 6.58
+                A2 2 0 0 1 9.25 8.7
+                L8 9.95
+                A16 16 0 0 0 14.05 16
+                L15.3 14.75
+                A2 2 0 0 1 17.42 14.3
+                C18.35 14.64 19.3 14.87 20.28 15
+                A2 2 0 0 1 22 16.92Z"
+                stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Call Me
+          </a>
+
+          <a class="contact-btn"
+             href="mailto:yahyar@uni.sa">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"
+                stroke="currentColor" stroke-width="1.7"/>
+              <path d="M3 7L12 13L21 7"
+                stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Email Me
+          </a>
+
+          <a class="contact-btn whatsapp"
+             href="https://wa.me/966535971767"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20.5 11.5A8.5 8.5 0 0 1 8 19
+                L3 20L4.5 15.5A8.5 8.5 0 1 1 20.5 11.5Z"
+                stroke="currentColor" stroke-width="1.7"
+                stroke-linejoin="round"/>
+              <path d="M9 8.5C9.5 11 11 12.5 13.5 13.5"
+                stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round"/>
+            </svg>
+            WhatsApp
+          </a>
+
+          <a class="contact-btn"
+             href="https://www.nesmaunitedindustries.com"
+             target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"
+                stroke="currentColor" stroke-width="1.7"/>
+              <path d="M3 12H21M12 3A15 15 0 0 1 12 21
+                A15 15 0 0 1 12 3Z"
+                stroke="currentColor" stroke-width="1.7"/>
+            </svg>
+            Website
+          </a>
+
+          <button class="contact-btn" id="saveContact" type="button">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3V15M7 10L12 15L17 10M4 20H20"
+                stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Save Contact
+          </button>
+
+          <button class="contact-btn" id="shareContact" type="button">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"
+                stroke="currentColor" stroke-width="1.7"/>
+              <circle cx="6" cy="12" r="3"
+                stroke="currentColor" stroke-width="1.7"/>
+              <circle cx="18" cy="19" r="3"
+                stroke="currentColor" stroke-width="1.7"/>
+              <path d="M8.7 10.6L15.3 6.4M8.7 13.4L15.3 17.6"
+                stroke="currentColor" stroke-width="1.7"/>
+            </svg>
+            Share Card
+          </button>
+        </section>
+
+        <!-- QR CODE -->
+        <div class="divider"></div>
+
+        <section class="qr-section" aria-label="Share by QR code">
+          <div class="qr-copy">
+            <h2>Connect Instantly</h2>
+            <p>
+              Scan the QR code to open my digital business card
+              and save my contact details.
+            </p>
+            <span class="qr-url" id="publicUrl">
+              Public URL: Configure after hosting
+            </span>
+          </div>
+
+          <div class="qr-frame">
+            <img id="qrCode"
+                 alt="QR code linking to this digital business card"
+                 hidden>
+            <div class="qr-placeholder" id="qrPlaceholder">
+              QR code will appear after hosting
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="card-footer">
+          <span class="footer-brand">Professional Contact Card</span>
+
+          <div class="footer-icons">
+            <a href="mailto:yahyar@uni.sa"
+               aria-label="Send email">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="2"
+                  stroke="currentColor" stroke-width="1.7"/>
+                <path d="M3 7L12 13L21 7"
+                  stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </a>
+
+            <a href="https://wa.me/966535971767"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Open WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M20.5 11.5A8.5 8.5 0 0 1 8 19
+                  L3 20L4.5 15.5A8.5 8.5 0 1 1 20.5 11.5Z"
+                  stroke="currentColor" stroke-width="1.7"/>
+                <path d="M9 8.5C9.5 11 11 12.5 13.5 13.5"
+                  stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </a>
+          </div>
+        </footer>
+
+      </div>
+    </article>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+
+    /* =========================================
+       1. EDITABLE BUSINESS CARD INFORMATION
+    ========================================= */
+
+    const contact = {
+      firstName: "Yehya",
+      lastName: "Rahhal",
+      fullName: "Yehya Rahhal",
+      jobTitle: "Chilled Water Plant Manager",
+      company: "Nesma United",
+      phone: "+966535971767",
+      email: "yahyar@uni.sa",
+      website: "https://www.nesmaunitedindustries.com",
+      whatsapp: "966535971767"
+    };
+
+    /*
+      PUBLIC URL CONFIGURATION
+
+      After hosting this page, replace the placeholder below
+      with your actual public URL.
+
+      Example:
+      const PUBLIC_URL = "https://yourdomain.com/card/";
+
+      The QR code will automatically link to this address.
+    */
+
+    const PUBLIC_URL = "https://YOUR-DOMAIN.com/";
+
+    /* =========================================
+       2. QR CODE GENERATION
+    ========================================= */
+
+    const qrImage = document.getElementById("qrCode");
+    const qrPlaceholder = document.getElementById("qrPlaceholder");
+    const publicUrlElement = document.getElementById("publicUrl");
+
+    function configureQRCode() {
+      const isConfigured =
+        PUBLIC_URL.startsWith("https://") &&
+        !PUBLIC_URL.includes("YOUR-DOMAIN");
+
+      if (!isConfigured) {
+        publicUrlElement.textContent =
+          "Public URL: Configure after hosting";
+
+        qrPlaceholder.hidden = false;
+        qrImage.hidden = true;
+        return;
+      }
+
+      publicUrlElement.textContent = PUBLIC_URL;
+
+      /*
+        Free QR generation service.
+        The QR code contains the public card URL.
+      */
+
+      const qrUrl = new URL("https://api.qrserver.com/v1/create-qr-code/");
+
+      qrUrl.search = new URLSearchParams({
+        size: "300x300",
+        data: PUBLIC_URL,
+        ecc: "H",
+        margin: "8",
+        format: "png"
+      }).toString();
+
+      qrImage.onload = function () {
+        qrImage.hidden = false;
+        qrPlaceholder.hidden = true;
+      };
+
+      qrImage.onerror = function () {
+        qrImage.hidden = true;
+        qrPlaceholder.hidden = false;
+        qrPlaceholder.textContent = "QR code unavailable";
+      };
+
+      qrImage.src = qrUrl.toString();
+    }
+
+    /* =========================================
+       3. VCF / VCARD CONTACT DOWNLOAD
+    ========================================= */
+
+    function escapeVCard(value) {
+      return String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/;/g, "\\;")
+        .replace(/,/g, "\\,");
+    }
+
+    function downloadContact() {
+      const lines = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:" +
+          escapeVCard(contact.lastName) + ";" +
+          escapeVCard(contact.firstName) + ";;;",
+        "FN:" + escapeVCard(contact.fullName),
+        "ORG:" + escapeVCard(contact.company),
+        "TITLE:" + escapeVCard(contact.jobTitle),
+        "TEL;TYPE=CELL,VOICE:" + contact.phone,
+        "EMAIL;TYPE=INTERNET,WORK:" + escapeVCard(contact.email),
+        "URL:" + escapeVCard(contact.website),
+        "NOTE:" + escapeVCard("WhatsApp: https://wa.me/" + contact.whatsapp),
+        "END:VCARD"
+      ];
+
+      const vCardContent = lines.join("\r\n") + "\r\n";
+
+      const blob = new Blob(
+        [vCardContent],
+        { type: "text/vcard;charset=utf-8" }
+      );
+
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = downloadUrl;
+      link.download = "Yehya-Rahhal.vcf";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      URL.revokeObjectURL(downloadUrl);
+
+      showToast("Contact downloaded successfully");
+    }
+
+    document
+      .getElementById("saveContact")
+      .addEventListener("click", downloadContact);
+
+    /* =========================================
+       4. SHARE BUSINESS CARD
+    ========================================= */
+
+    async function shareContact() {
+      const shareData = {
+        title: contact.fullName + " | " + contact.company,
+        text:
+          contact.fullName + "\n" +
+          contact.jobTitle + "\n" +
+          contact.company + "\n" +
+          "Phone: " + contact.phone + "\n" +
+          "Email: " + contact.email,
+        url: PUBLIC_URL
+      };
+
+      /*
+        Use the native share menu when supported.
+        Otherwise, copy the card URL to the clipboard.
+      */
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (error) {
+          if (error.name === "AbortError") {
+            return;
+          }
+        }
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(PUBLIC_URL);
+          showToast("Business card link copied");
+          return;
+        } catch (error) {
+          // Continue to the manual copy fallback.
+        }
+      }
+
+      /*
+        Fallback for browsers that do not support
+        Web Share or clipboard access.
+      */
+
+      const textArea = document.createElement("textarea");
+
+      textArea.value = PUBLIC_URL;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+
+      document.body.appendChild(textArea);
+      textArea.select();
+
+      let copied = false;
+
+      try {
+        copied = document.execCommand("copy");
+      } catch (error) {
+        copied = false;
+      }
+
+      textArea.remove();
+
+      if (copied) {
+        showToast("Business card link copied");
+      } else {
+        window.prompt("Copy your business card URL:", PUBLIC_URL);
+      }
+    }
+
+    document
+      .getElementById("shareContact")
+      .addEventListener("click", shareContact);
+
+    /* =========================================
+       5. USER FEEDBACK
+    ========================================= */
+
+    let toastTimer;
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("visible");
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(function () {
+        toast.classList.remove("visible");
+      }, 2800);
+    }
+
+    /* =========================================
+       6. INITIALIZE
+    ========================================= */
+
+    configureQRCode();
+  </script>
+</body>
+</html>
